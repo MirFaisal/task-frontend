@@ -4,7 +4,9 @@ import Task from "./Task";
 
 interface TaskType {
   id: string;
-  [key: string]: any; // Adjust this based on the actual structure of your task object
+  title: string;
+  description: string;
+  column: string;
 }
 
 interface ColumnProps {

@@ -9,7 +9,7 @@ interface Task {
   order: number;
 }
 
-const columns: string[] = ["todo", "inProgress", "done"];
+const columns: ("todo" | "inProgress" | "done")[] = ["todo", "inProgress", "done"];
 
 const Board: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
