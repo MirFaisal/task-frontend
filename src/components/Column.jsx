@@ -2,35 +2,22 @@ import React from "react";
 import { useDrop } from "react-dnd";
 import Task from "./Task";
 
-interface TaskType {
-  id: string;
-  title: string;
-  description: string;
-  column: string;
-}
-
-interface ColumnProps {
-  title: "todo" | "inProgress" | "done";
-  tasks: TaskType[];
-  onDropTask: (taskId: string, column: string, dropIndex: number) => void;
-}
-
-const Column: React.FC<ColumnProps> = ({ title, tasks, onDropTask }) => {
+const Column = ({ title, tasks, onDropTask }) => {
   const [, drop] = useDrop({
     accept: "TASK",
-    drop: (item: { id: string }) => {
+    drop: (item) => {
       const dropIndex = tasks.length;
       onDropTask(item.id, title, dropIndex);
     },
   });
 
-  const columnTitle: Record<string, string> = {
+  const columnTitle = {
     todo: "To Do",
     inProgress: "In Progress",
     done: "Done",
   };
 
-  const columnStyle: Record<string, string> = {
+  const columnStyle = {
     todo: "bg-gradient-to-b from-blue-50 to-white",
     inProgress: "bg-gradient-to-b from-yellow-50 to-white",
     done: "bg-gradient-to-b from-green-50 to-white",

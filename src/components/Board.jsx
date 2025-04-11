@@ -2,17 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Column from "./Column";
 
-interface Task {
-  id: string;
-  title: string;
-  column: string;
-  order: number;
-}
+const columns = ["todo", "inProgress", "done"];
 
-const columns: ("todo" | "inProgress" | "done")[] = ["todo", "inProgress", "done"];
-
-const Board: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+const Board = () => {
+  const [tasks, setTasks] = useState([]);
 
   // Fetch tasks from backend
   useEffect(() => {
@@ -24,7 +17,7 @@ const Board: React.FC = () => {
   console.log(tasks);
 
   // Handle task drop
-  const handleDrop = (draggedId: string, targetColumn: string, targetIndex: number) => {
+  const handleDrop = (draggedId, targetColumn, targetIndex) => {
     const draggedTask = tasks.find((t) => t.id === draggedId);
     if (!draggedTask) return;
 

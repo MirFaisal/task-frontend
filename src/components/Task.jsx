@@ -1,22 +1,13 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 
-const columnBorderColor: Record<string, string> = {
+const columnBorderColor = {
   todo: "border-l-blue-500",
   inProgress: "border-l-yellow-500",
   done: "border-l-green-500",
 };
 
-interface TaskProps {
-  task: {
-    id: string;
-    title: string;
-    description: string;
-    column: string;
-  };
-}
-
-const Task: React.FC<TaskProps> = ({ task }) => {
+const Task = ({ task }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "TASK",
     item: { id: task.id },
