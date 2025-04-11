@@ -14,8 +14,6 @@ const Board = () => {
     });
   }, []);
 
-  console.log(tasks);
-
   // Handle task drop
   const handleDrop = (draggedId, targetColumn, targetIndex) => {
     const draggedTask = tasks.find((t) => t.id === draggedId);
